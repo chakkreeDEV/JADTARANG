@@ -1,5 +1,5 @@
 // ==========================================
-// 📦 Import ข้อมูลดิบจากแต่ละไฟล์
+// 📦 Import ข้อมูลดิบจากแต่ละไฟล์ (อยู่ใน folder เดียวกัน)
 // ==========================================
 import { RAW_COURSES_ENG } from './engineering';
 import { COURSES_0041 } from './generaledu0041';
@@ -23,7 +23,6 @@ const dayMap = {
 
 // ==========================================
 // 🔧 แปลง array of objects → MOCK_COURSES format
-// รองรับทั้ง RAW_COURSES_ENG (วิศวะ) และ COURSES_004x (ศึกษาทั่วไป)
 // ==========================================
 const convertToMockCourses = (rawArray, category) => {
   const courseMap = {};
@@ -38,7 +37,7 @@ const convertToMockCourses = (rawArray, category) => {
 
     const name = item.courseName || 'Unknown';
 
-    // แปลงเวลา เช่น "Mo09:00-12:00" หรือ "Mo09:00-12:00" ที่มาใน field time
+    // แปลงเวลา เช่น "Mo09:00-12:00"
     let day = '';
     let startTime = '';
     let endTime = '';
@@ -54,8 +53,6 @@ const convertToMockCourses = (rawArray, category) => {
     const room = item.room || '';
     const sec = String(item.sec || '01').padStart(2, '0');
     const instructor = item.instructor || '-';
-
-    // ไฟล์วิศวะมี status ในตัว instructor บางส่วน แต่ไฟล์ใหม่ไม่มี → ใช้ 'W' เป็น default
     const status = item.status || 'W';
 
     if (!courseMap[code]) {
@@ -87,10 +84,10 @@ const convertToMockCourses = (rawArray, category) => {
 // 📚 รวมข้อมูลทุกหมวด
 // ==========================================
 export const MOCK_COURSES = [
-  ...convertToMockCourses(RAW_COURSES_ENG,  'วิศวกรรมศาสตร์'),
-  ...convertToMockCourses(COURSES_0041,      'ศึกษาทั่วไป 0041'),
-  ...convertToMockCourses(COURSES_0042,      'ศึกษาทั่วไป 0042'),
-  ...convertToMockCourses(COURSES_0043,      'ศึกษาทั่วไป 0043'),
-  ...convertToMockCourses(COURSES_0044,      'ศึกษาทั่วไป 0044'),
-  ...convertToMockCourses(COURSES_0045,      'ศึกษาทั่วไป 0045'),
+  ...convertToMockCourses(RAW_COURSES_ENG, 'วิศวกรรมศาสตร์'),
+  ...convertToMockCourses(COURSES_0041,    'ศึกษาทั่วไป 0041'),
+  ...convertToMockCourses(COURSES_0042,    'ศึกษาทั่วไป 0042'),
+  ...convertToMockCourses(COURSES_0043,    'ศึกษาทั่วไป 0043'),
+  ...convertToMockCourses(COURSES_0044,    'ศึกษาทั่วไป 0044'),
+  ...convertToMockCourses(COURSES_0045,    'ศึกษาทั่วไป 0045'),
 ];

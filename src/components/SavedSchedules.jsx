@@ -36,13 +36,13 @@ export default function SavedSchedules({
       {/* Header */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors"
+        className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-100 transition-colors"
       >
         <div className="flex items-center gap-2">
-          <BookMarked className="w-4 h-4 text-yellow-500" />
+          <BookMarked className="w-4 h-4 text-red-600" />
           <span className="font-bold text-sm text-gray-800">ตารางที่บันทึกไว้</span>
           {savedSchedules.length > 0 && (
-            <span className="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-0.5 rounded-full">
+            <span className="bg-red-100 text-red-600 text-xs font-bold px-2 py-0.5 rounded-full">
               {savedSchedules.length}
             </span>
           )}
@@ -58,7 +58,7 @@ export default function SavedSchedules({
               {!showSaveForm ? (
                 <button
                   onClick={() => setShowSaveForm(true)}
-                  className="w-full flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2.5 rounded-xl text-sm transition-colors"
+                  className="w-full flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-gray-900 font-bold py-2.5 rounded-xl text-sm transition-colors"
                 >
                   <Save className="w-4 h-4" />
                   บันทึกตารางปัจจุบัน ({currentCoursesCount} วิชา)
@@ -72,11 +72,11 @@ export default function SavedSchedules({
                     onKeyDown={(e) => e.key === 'Enter' && handleSave()}
                     placeholder="ชื่อตาราง (เช่น เทอม 1/2568)"
                     autoFocus
-                    className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-yellow-400"
+                    className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-red-500"
                   />
                   <button
                     onClick={handleSave}
-                    className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm transition-colors"
+                    className="bg-red-500 hover:bg-red-600 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm transition-colors"
                   >
                     <Save className="w-4 h-4" />
                   </button>
@@ -116,7 +116,7 @@ export default function SavedSchedules({
                         </button>
                         <button
                           onClick={() => setConfirmDelete(null)}
-                          className="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-gray-200"
+                          className="text-xs bg-gray-200 text-gray-600 px-3 py-1.5 rounded-lg hover:bg-gray-200"
                         >
                           ยกเลิก
                         </button>
@@ -139,7 +139,7 @@ export default function SavedSchedules({
                           {s.courses.slice(0, 5).map((c, idx) => (
                             <span
                               key={idx}
-                              className="text-[10px] bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded"
+                              className="text-[10px] bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded"
                             >
                               {c.code}
                             </span>
@@ -154,7 +154,7 @@ export default function SavedSchedules({
                       <div className="flex gap-1.5 shrink-0">
                         <button
                           onClick={() => loadSchedule(s)}
-                          className="bg-gray-800 hover:bg-gray-700 text-white text-xs px-3 py-1.5 rounded-lg font-medium transition-colors flex items-center gap-1"
+                          className="bg-gray-600 hover:bg-gray-600 text-white text-xs px-3 py-1.5 rounded-lg font-medium transition-colors flex items-center gap-1"
                         >
                           <Download className="w-3 h-3" /> โหลด
                         </button>

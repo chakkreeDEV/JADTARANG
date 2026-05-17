@@ -11,7 +11,7 @@ export default function LandingPage() {
       {/* ===== Navbar ===== */}
       <nav className="px-6 py-4 flex items-center justify-between border-b border-white/5">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
             <GraduationCap className="w-5 h-5 text-gray-900" />
           </div>
           <span className="text-white font-black tracking-tight text-lg">MSU Schedule</span>
@@ -26,7 +26,7 @@ export default function LandingPage() {
 
         {/* Icon */}
         <div className="relative mb-8">
-          <div className="w-28 h-28 bg-yellow-400 rounded-3xl rotate-6 flex items-center justify-center shadow-2xl shadow-yellow-400/20">
+          <div className="w-28 h-28 bg-red-500 rounded-3xl rotate-6 flex items-center justify-center shadow-2xl shadow-red-500/20">
             <CalendarDays className="w-14 h-14 text-gray-900 -rotate-6" />
           </div>
           <div className="absolute -bottom-1 -right-3 w-10 h-10 bg-green-400 rounded-2xl rotate-12 flex items-center justify-center shadow-lg">
@@ -37,7 +37,7 @@ export default function LandingPage() {
         {/* Heading */}
         <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
           จัดตารางเรียน<br />
-          <span className="text-yellow-400">ง่ายๆ ได้เลย</span>
+          <span className="text-red-500">ง่ายๆ ได้เลย</span>
         </h1>
         <p className="text-gray-400 text-base sm:text-lg max-w-md mb-10 leading-relaxed">
           ค้นหาวิชา เลือกกลุ่มเรียน ปรับแต่งสี<br />
@@ -47,7 +47,7 @@ export default function LandingPage() {
         {/* CTA */}
         <button
           onClick={() => navigate('/schedule')}
-          className="group flex items-center gap-3 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-black text-lg px-10 py-4 rounded-2xl transition-all shadow-xl shadow-yellow-400/20 hover:shadow-yellow-400/40 hover:-translate-y-0.5 active:translate-y-0"
+          className="group flex items-center gap-3 bg-red-500 hover:bg-yellow-300 text-gray-900 font-black text-lg px-10 py-4 rounded-2xl transition-all shadow-xl shadow-red-500/20 hover:shadow-red-500/40 hover:-translate-y-0.5 active:translate-y-0"
         >
           <CalendarDays className="w-5 h-5" />
           เริ่มการจัดตารางเรียน
@@ -65,7 +65,7 @@ export default function LandingPage() {
             },
             {
               icon: <CalendarDays className="w-6 h-6" />,
-              color: 'bg-yellow-400/10 text-yellow-400 border-yellow-400/20',
+              color: 'bg-red-500/10 text-red-500 border-red-500/20',
               title: 'ตารางชัดเจน',
               desc: 'เห็นช่วงเวลาทุกวันได้ทันที',
             },

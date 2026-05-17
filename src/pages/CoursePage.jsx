@@ -30,18 +30,18 @@ export default function CoursePage({ addCourse }) {
   const dayInfo = (id) => DAYS.find((d) => d.id === id);
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
+    <div className="min-h-screen bg-gray-100 font-sans">
 
       {/* Header */}
-      <header className="bg-gray-800 text-white p-4 shadow-md sticky top-0 z-30">
+      <header className="bg-gray-600 text-white p-4 shadow-md sticky top-0 z-30">
         <div className="max-w-6xl mx-auto flex items-center gap-3">
           <button onClick={() => navigate('/')}
-            className="flex items-center gap-1.5 bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-lg transition-colors text-sm shrink-0">
+            className="flex items-center gap-1.5 bg-gray-600 hover:bg-gray-600 px-3 py-2 rounded-lg transition-colors text-sm shrink-0">
             <ArrowLeft className="w-4 h-4" /> กลับ
           </button>
           <div className="flex items-center gap-2 flex-1">
-            <BookOpen className="w-5 h-5 text-yellow-400 shrink-0" />
-            <h1 className="text-lg font-bold text-yellow-400 shrink-0">เลือกวิชา</h1>
+            <BookOpen className="w-5 h-5 text-red-500 shrink-0" />
+            <h1 className="text-lg font-bold text-red-500 shrink-0">เลือกวิชา</h1>
             <span className="text-gray-400 text-xs">({filteredCourses.length} วิชา)</span>
           </div>
           {/* Search */}
@@ -50,7 +50,7 @@ export default function CoursePage({ addCourse }) {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-gray-700 border border-gray-600 text-white placeholder-gray-400 p-2.5 pl-9 rounded-xl focus:outline-none focus:border-yellow-400 text-sm"
+              className="w-full bg-gray-600 border border-gray-600 text-white placeholder-gray-400 p-2.5 pl-9 rounded-xl focus:outline-none focus:border-red-500 text-sm"
               placeholder="ค้นหาวิชา..."
             />
             <Search className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
@@ -72,8 +72,8 @@ export default function CoursePage({ addCourse }) {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors shrink-0 ${
                 selectedCategory === cat
-                  ? 'bg-yellow-400 text-gray-900'
-                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                  ? 'bg-red-500 text-gray-900'
+                  : 'bg-gray-600 text-gray-300 hover:bg-gray-600'
               }`}
             >
               {cat}
@@ -89,23 +89,23 @@ export default function CoursePage({ addCourse }) {
             <button
               key={course.code}
               onClick={() => setSelectedCourse(course)}
-              className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5 text-left hover:shadow-md hover:border-yellow-400 transition-all group"
+              className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5 text-left hover:shadow-md hover:border-red-500 transition-all group"
             >
               <div className="flex items-start justify-between gap-2 mb-3">
                 <div className="flex-1 min-w-0">
-                  <span className="text-[11px] font-mono bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
+                  <span className="text-[11px] font-mono bg-gray-200 text-gray-600 px-2 py-0.5 rounded">
                     {course.code}
                   </span>
                   <h3 className="font-bold text-gray-800 text-sm mt-1.5 leading-snug line-clamp-2">
                     {course.name}
                   </h3>
                 </div>
-                <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-yellow-500 transition-colors shrink-0 mt-1" />
+                <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-red-600 transition-colors shrink-0 mt-1" />
               </div>
 
               <div className="flex items-center justify-between">
                 <div className="flex gap-2 flex-wrap">
-                  <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full font-semibold">
+                  <span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full font-semibold">
                     {course.credits} หน่วยกิต
                   </span>
                   <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-semibold">
@@ -151,16 +151,16 @@ export default function CoursePage({ addCourse }) {
             onClick={(e) => e.stopPropagation()}
           >
             {/* หัว Modal */}
-            <div className="bg-gray-800 text-white px-5 py-4 rounded-t-3xl sm:rounded-t-2xl shrink-0">
+            <div className="bg-gray-600 text-white px-5 py-4 rounded-t-3xl sm:rounded-t-2xl shrink-0">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <span className="text-yellow-400 font-mono text-xs font-bold">{selectedCourse.code}</span>
+                  <span className="text-red-500 font-mono text-xs font-bold">{selectedCourse.code}</span>
                   <h2 className="text-base font-bold mt-0.5">{selectedCourse.name}</h2>
                   <div className="flex gap-2 mt-1.5">
-                    <span className="bg-yellow-400 text-gray-900 px-2 py-0.5 rounded text-xs font-bold">
+                    <span className="bg-red-500 text-gray-900 px-2 py-0.5 rounded text-xs font-bold">
                       {selectedCourse.credits} หน่วยกิต
                     </span>
-                    <span className="bg-gray-700 text-gray-300 px-2 py-0.5 rounded text-xs">
+                    <span className="bg-gray-600 text-gray-300 px-2 py-0.5 rounded text-xs">
                       {selectedCourse.sections.length} กลุ่มเรียน
                     </span>
                   </div>
@@ -179,11 +179,11 @@ export default function CoursePage({ addCourse }) {
                   const d = dayInfo(sec.day);
                   return (
                     <div key={`${selectedCourse.code}-${sec.sec}`}
-                      className="px-5 py-4 hover:bg-yellow-50 transition-colors">
+                      className="px-5 py-4 hover:bg-red-50 transition-colors">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 space-y-1.5">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-xs font-bold">
+                            <span className="bg-gray-200 text-gray-700 px-2 py-0.5 rounded text-xs font-bold">
                               กลุ่ม {sec.sec}
                             </span>
                             {d && (
@@ -229,7 +229,7 @@ export default function CoursePage({ addCourse }) {
                             setSelectedCourse(null);
                             navigate('/');
                           }}
-                          className="shrink-0 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition-colors shadow-sm"
+                          className="shrink-0 bg-red-500 hover:bg-red-600 text-gray-900 font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 transition-colors shadow-sm"
                         >
                           <ShoppingCart className="w-4 h-4" /> เพิ่ม
                         </button>

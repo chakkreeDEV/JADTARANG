@@ -18,13 +18,13 @@ const DAYS = {
 };
 
 const DAY_COLORS = {
-  mon: 'bg-yellow-100 text-yellow-800',
+  mon: 'bg-red-100 text-red-600',
   tue: 'bg-pink-100 text-pink-800',
   wed: 'bg-green-100 text-green-800',
   thu: 'bg-orange-100 text-orange-800',
   fri: 'bg-blue-100 text-blue-800',
   sat: 'bg-purple-100 text-purple-800',
-  sun: 'bg-red-100 text-red-800',
+  sun: 'bg-red-100 text-red-500',
 };
 
 export default function SearchPage({ onAddCourse }) {
@@ -67,14 +67,14 @@ export default function SearchPage({ onAddCourse }) {
   }, [submitted]);
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
+    <div className="min-h-screen bg-gray-100 font-sans">
 
       {/* Header */}
-      <header className="bg-gray-800 text-white p-4 shadow-md sticky top-0 z-30">
+      <header className="bg-gray-600 text-white p-4 shadow-md sticky top-0 z-30">
         <div className="max-w-4xl mx-auto flex items-center gap-4">
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-lg transition-colors text-sm"
+            className="flex items-center gap-2 bg-gray-600 hover:bg-gray-600 px-3 py-2 rounded-lg transition-colors text-sm"
           >
             <ArrowLeft className="w-4 h-4" /> กลับ
           </button>
@@ -85,7 +85,7 @@ export default function SearchPage({ onAddCourse }) {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="w-full bg-gray-700 border border-gray-600 text-white placeholder-gray-400 p-3 pl-10 rounded-xl focus:outline-none focus:border-yellow-400 text-sm"
+                className="w-full bg-gray-600 border border-gray-600 text-white placeholder-gray-400 p-3 pl-10 rounded-xl focus:outline-none focus:border-red-500 text-sm"
                 placeholder="ค้นหารหัสวิชา, ชื่อวิชา หรือชื่ออาจารย์..."
                 autoFocus
               />
@@ -93,7 +93,7 @@ export default function SearchPage({ onAddCourse }) {
             </div>
             <button
               onClick={handleSearch}
-              className="bg-yellow-400 text-gray-900 px-5 py-2 rounded-xl font-bold hover:bg-yellow-500 transition-colors text-sm"
+              className="bg-red-500 text-gray-900 px-5 py-2 rounded-xl font-bold hover:bg-red-600 transition-colors text-sm"
             >
               ค้นหา
             </button>
@@ -126,21 +126,21 @@ export default function SearchPage({ onAddCourse }) {
           <div className="space-y-6 mt-2">
             <p className="text-sm text-gray-500">
               พบ <span className="font-bold text-gray-700">{results.length}</span> วิชา
-              จากคำค้นหา "<span className="font-bold text-yellow-600">{submitted}</span>"
+              จากคำค้นหา "<span className="font-bold text-red-500">{submitted}</span>"
             </p>
 
             {results.map((course) => (
               <div key={course.code} className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
 
                 {/* หัววิชา */}
-                <div className="bg-gray-800 text-white px-5 py-4">
+                <div className="bg-gray-600 text-white px-5 py-4">
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <span className="text-yellow-400 font-mono font-bold text-sm">{course.code}</span>
+                      <span className="text-red-500 font-mono font-bold text-sm">{course.code}</span>
                       <h2 className="text-base font-bold mt-0.5">{course.name}</h2>
                     </div>
                     <div className="text-right shrink-0">
-                      <span className="bg-yellow-400 text-gray-900 px-2 py-0.5 rounded text-xs font-bold">
+                      <span className="bg-red-500 text-gray-900 px-2 py-0.5 rounded text-xs font-bold">
                         {course.credits} หน่วยกิต
                       </span>
                       {course.category && (
@@ -155,18 +155,18 @@ export default function SearchPage({ onAddCourse }) {
                   {course.sections.map((sec) => (
                     <div
                       key={`${course.code}-${sec.sec}`}
-                      className="px-5 py-4 hover:bg-yellow-50 transition-colors"
+                      className="px-5 py-4 hover:bg-red-50 transition-colors"
                     >
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex-1 space-y-2">
 
                           {/* sec + วัน */}
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-xs font-bold">
+                            <span className="bg-gray-200 text-gray-700 px-2 py-0.5 rounded text-xs font-bold">
                               Sec {sec.sec}
                             </span>
                             {sec.day && (
-                              <span className={`px-2 py-0.5 rounded text-xs font-semibold ${DAY_COLORS[sec.day] || 'bg-gray-100 text-gray-700'}`}>
+                              <span className={`px-2 py-0.5 rounded text-xs font-semibold ${DAY_COLORS[sec.day] || 'bg-gray-200 text-gray-700'}`}>
                                 {DAYS[sec.day] || sec.day}
                               </span>
                             )}
@@ -220,7 +220,7 @@ export default function SearchPage({ onAddCourse }) {
                             });
                             navigate('/');
                           }}
-                          className="shrink-0 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm flex items-center gap-1.5 transition-colors shadow-sm"
+                          className="shrink-0 bg-red-500 hover:bg-red-600 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm flex items-center gap-1.5 transition-colors shadow-sm"
                         >
                           <ShoppingCart className="w-4 h-4" />
                           เพิ่ม

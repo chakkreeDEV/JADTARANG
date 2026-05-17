@@ -14,13 +14,13 @@ const DAYS = {
   thu: 'พฤหัสบดี', fri: 'ศุกร์', sat: 'เสาร์', sun: 'อาทิตย์',
 };
 const DAY_COLORS = {
-  mon: 'bg-yellow-100 text-yellow-800 border-yellow-300',
+  mon: 'bg-red-100 text-red-600 border-yellow-300',
   tue: 'bg-pink-100 text-pink-800 border-pink-300',
   wed: 'bg-green-100 text-green-800 border-green-300',
   thu: 'bg-orange-100 text-orange-800 border-orange-300',
   fri: 'bg-blue-100 text-blue-800 border-blue-300',
   sat: 'bg-purple-100 text-purple-800 border-purple-300',
-  sun: 'bg-red-100 text-red-800 border-red-300',
+  sun: 'bg-red-100 text-red-500 border-red-300',
 };
 
 // ==========================================
@@ -57,12 +57,12 @@ function MiniCourseCard({ course, onAddCourse, addedSections }) {
       {/* หัว */}
       <button
         onClick={() => setExpanded((v) => !v)}
-        className="w-full text-left px-4 py-3 flex items-center justify-between gap-3 hover:bg-gray-50 transition-colors"
+        className="w-full text-left px-4 py-3 flex items-center justify-between gap-3 hover:bg-gray-100 transition-colors"
       >
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-0.5">
-            <span className="font-mono text-xs font-bold text-yellow-600">{course.code}</span>
-            <span className="text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">
+            <span className="font-mono text-xs font-bold text-red-500">{course.code}</span>
+            <span className="text-[10px] bg-gray-200 text-gray-500 px-1.5 py-0.5 rounded">
               {course.credits} หน่วยกิต
             </span>
           </div>
@@ -77,7 +77,7 @@ function MiniCourseCard({ course, onAddCourse, addedSections }) {
 
       {/* Dropdown sections */}
       {expanded && (
-        <div className="border-t border-gray-100 px-4 py-3 bg-gray-50 space-y-3">
+        <div className="border-t border-gray-100 px-4 py-3 bg-gray-100 space-y-3">
           {/* เลือก section */}
           <div className="space-y-1.5">
             <p className="text-xs font-semibold text-gray-500">เลือกกลุ่มเรียน:</p>
@@ -92,10 +92,10 @@ function MiniCourseCard({ course, onAddCourse, addedSections }) {
                     disabled={added}
                     className={`w-full text-left px-3 py-2 rounded-lg border transition-all text-xs
                       ${added
-                        ? 'opacity-50 cursor-not-allowed bg-gray-100 border-gray-200'
+                        ? 'opacity-50 cursor-not-allowed bg-gray-200 border-gray-200'
                         : isSelected
-                          ? 'bg-yellow-50 border-yellow-400 shadow-sm'
-                          : 'bg-white border-gray-200 hover:border-yellow-300 hover:bg-yellow-50/50'
+                          ? 'bg-red-50 border-red-500 shadow-sm'
+                          : 'bg-white border-gray-200 hover:border-yellow-300 hover:bg-red-50/50'
                       }`}
                   >
                     <div className="flex items-center gap-2 mb-1">
@@ -109,7 +109,7 @@ function MiniCourseCard({ course, onAddCourse, addedSections }) {
                         <span className="text-[10px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">✓ เพิ่มแล้ว</span>
                       )}
                       {isSelected && !added && (
-                        <span className="text-[10px] bg-yellow-200 text-yellow-800 px-1.5 py-0.5 rounded-full">✓ เลือกแล้ว</span>
+                        <span className="text-[10px] bg-yellow-200 text-red-600 px-1.5 py-0.5 rounded-full">✓ เลือกแล้ว</span>
                       )}
                     </div>
                     <div className="flex flex-wrap gap-2 text-gray-500">
@@ -142,7 +142,7 @@ function MiniCourseCard({ course, onAddCourse, addedSections }) {
             disabled={!selectedSec}
             className={`w-full flex items-center justify-center gap-1.5 py-2 rounded-lg text-sm font-bold transition-all
               ${selectedSec
-                ? 'bg-yellow-400 hover:bg-yellow-500 text-gray-900'
+                ? 'bg-red-500 hover:bg-red-600 text-gray-900'
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'
               }`}
           >
@@ -185,10 +185,10 @@ function CategorySection({ category, courses, onAddCourse, addedSections }) {
       {/* หัวหมวด */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between px-5 py-4 bg-gray-800 text-white hover:bg-gray-700 transition-colors"
+        className="w-full flex items-center justify-between px-5 py-4 bg-gray-600 text-white hover:bg-gray-600 transition-colors"
       >
         <div className="flex items-center gap-3">
-          <BookOpen className="w-5 h-5 text-yellow-400" />
+          <BookOpen className="w-5 h-5 text-red-500" />
           <div className="text-left">
             <span className="font-bold">{category}</span>
             <span className="text-gray-400 text-sm ml-2">({courses.length} วิชา)</span>
@@ -211,7 +211,7 @@ function CategorySection({ category, courses, onAddCourse, addedSections }) {
                 onClick={() => setDayFilter(d.key)}
                 className={`shrink-0 text-xs px-3 py-1.5 rounded-full border font-medium transition-colors
                   ${dayFilter === d.key
-                    ? 'bg-yellow-400 border-yellow-400 text-gray-900'
+                    ? 'bg-red-500 border-red-500 text-gray-900'
                     : 'bg-white border-gray-200 text-gray-600 hover:border-yellow-300'
                   }`}
               >
@@ -259,13 +259,13 @@ export default function BrowsePage({ courses, addCourse }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
-      <header className="bg-gray-800 text-white px-4 py-3 sticky top-0 z-30 shadow-lg">
+    <div className="min-h-screen bg-gray-100 font-sans">
+      <header className="bg-gray-600 text-white px-4 py-3 sticky top-0 z-30 shadow-lg">
         <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <button
               onClick={() => navigate('/')}
-              className="flex items-center gap-1.5 bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors"
+              className="flex items-center gap-1.5 bg-gray-600 hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors"
             >
               <ArrowLeft className="w-4 h-4" /> กลับ
             </button>
@@ -273,7 +273,7 @@ export default function BrowsePage({ courses, addCourse }) {
           </div>
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-1.5 bg-yellow-400 text-gray-900 px-3 py-2 rounded-lg text-sm font-bold hover:bg-yellow-500 transition-colors"
+            className="flex items-center gap-1.5 bg-red-500 text-gray-900 px-3 py-2 rounded-lg text-sm font-bold hover:bg-red-600 transition-colors"
           >
             <BookOpen className="w-4 h-4" />
             {courses.length} วิชา

@@ -83,7 +83,7 @@ function ScheduleGrid({ courses, courseColors, onRemoveCourse, onColorChange }) 
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
       {/* Day headers */}
       <div
-        className="grid bg-gray-800 text-white text-xs"
+        className="grid bg-gray-600 text-white text-xs"
         style={{ gridTemplateColumns: `52px repeat(${displayDays.length}, 1fr)` }}
       >
         <div className="py-3 text-center text-gray-500 text-[10px]">เวลา</div>
@@ -106,7 +106,7 @@ function ScheduleGrid({ courses, courseColors, onRemoveCourse, onColorChange }) 
             }}
           >
             {/* Time column */}
-            <div className="relative bg-gray-50 border-r border-gray-100">
+            <div className="relative bg-gray-100 border-r border-gray-100">
               {HOURS.map((h) => (
                 <div
                   key={h}
@@ -278,13 +278,13 @@ function SavedPanel({ savedSchedules, saveSchedule, loadSchedule, deleteSchedule
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors"
+        className="w-full flex items-center justify-between px-4 py-3 hover:bg-gray-100 transition-colors"
       >
         <div className="flex items-center gap-2">
-          <BookMarked className="w-4 h-4 text-yellow-500" />
+          <BookMarked className="w-4 h-4 text-red-600" />
           <span className="font-bold text-sm text-gray-800">ตารางที่บันทึกไว้</span>
           {savedSchedules.length > 0 && (
-            <span className="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-0.5 rounded-full">
+            <span className="bg-red-100 text-red-600 text-xs font-bold px-2 py-0.5 rounded-full">
               {savedSchedules.length}
             </span>
           )}
@@ -302,15 +302,15 @@ function SavedPanel({ savedSchedules, saveSchedule, loadSchedule, deleteSchedule
                   onChange={(e) => setName(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSave()}
                   placeholder={`ชื่อตาราง (${currentCount} วิชา)`}
-                  className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-yellow-400"
+                  className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-red-500"
                 />
-                <button onClick={handleSave} className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm">บันทึก</button>
+                <button onClick={handleSave} className="bg-red-500 hover:bg-red-600 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm">บันทึก</button>
                 <button onClick={() => setSaving(false)} className="text-gray-400 hover:text-gray-600 px-2"><X className="w-4 h-4" /></button>
               </div>
             ) : (
               <button
                 onClick={() => setSaving(true)}
-                className="w-full flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2.5 rounded-xl text-sm transition-colors"
+                className="w-full flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-gray-900 font-bold py-2.5 rounded-xl text-sm transition-colors"
               >
                 <Save className="w-4 h-4" /> บันทึกตารางปัจจุบัน ({currentCount} วิชา)
               </button>
@@ -328,7 +328,7 @@ function SavedPanel({ savedSchedules, saveSchedule, loadSchedule, deleteSchedule
                       <span className="text-sm text-red-600">ลบ "{s.name}" ใช่ไหม?</span>
                       <div className="flex gap-2">
                         <button onClick={() => { deleteSchedule(s.id); setConfirm(null); }} className="text-xs bg-red-500 text-white px-3 py-1.5 rounded-lg font-bold">ลบ</button>
-                        <button onClick={() => setConfirm(null)} className="text-xs bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg">ยกเลิก</button>
+                        <button onClick={() => setConfirm(null)} className="text-xs bg-gray-200 text-gray-600 px-3 py-1.5 rounded-lg">ยกเลิก</button>
                       </div>
                     </div>
                   ) : (
@@ -341,13 +341,13 @@ function SavedPanel({ savedSchedules, saveSchedule, loadSchedule, deleteSchedule
                         </div>
                         <div className="flex flex-wrap gap-1 mt-1.5">
                           {s.courses.slice(0, 6).map((c, i) => (
-                            <span key={i} className="text-[10px] bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded">{c.code}</span>
+                            <span key={i} className="text-[10px] bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded">{c.code}</span>
                           ))}
                           {s.courses.length > 6 && <span className="text-[10px] text-gray-400">+{s.courses.length - 6}</span>}
                         </div>
                       </div>
                       <div className="flex gap-1.5 shrink-0">
-                        <button onClick={() => loadSchedule(s)} className="bg-gray-800 hover:bg-gray-700 text-white text-xs px-3 py-1.5 rounded-lg font-medium flex items-center gap-1">
+                        <button onClick={() => loadSchedule(s)} className="bg-gray-600 hover:bg-gray-600 text-white text-xs px-3 py-1.5 rounded-lg font-medium flex items-center gap-1">
                           <Download className="w-3 h-3" /> โหลด
                         </button>
                         <button onClick={() => setConfirm(s.id)} className="text-gray-300 hover:text-red-400 p-1.5 transition-colors">
@@ -398,13 +398,13 @@ export default function SchedulePage(props) {
     setCourseColors((prev) => ({ ...prev, [code]: hex }));
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
+    <div className="min-h-screen bg-gray-100 font-sans">
 
       {/* ===== Header ===== */}
-      <header className="bg-gray-800 text-white px-4 py-3 sticky top-0 z-30 shadow-lg">
+      <header className="bg-gray-600 text-white px-4 py-3 sticky top-0 z-30 shadow-lg">
         <div className="max-w-5xl mx-auto flex items-center gap-3">
           <div className="flex items-center gap-2 shrink-0">
-            <div className="w-7 h-7 bg-yellow-400 rounded-lg flex items-center justify-center">
+            <div className="w-7 h-7 bg-red-500 rounded-lg flex items-center justify-center">
               <GraduationCap className="w-4 h-4 text-gray-900" />
             </div>
             <span className="font-black text-sm hidden sm:block">MSU Schedule</span>
@@ -413,10 +413,10 @@ export default function SchedulePage(props) {
             type="text"
             value={scheduleName}
             onChange={(e) => setScheduleName(e.target.value)}
-            className="flex-1 bg-gray-700 border border-gray-600 text-white px-3 py-1.5 rounded-lg text-sm focus:outline-none focus:border-yellow-400 min-w-0"
+            className="flex-1 bg-gray-600 border border-gray-600 text-white px-3 py-1.5 rounded-lg text-sm focus:outline-none focus:border-red-500 min-w-0"
             placeholder="ชื่อตาราง..."
           />
-          <div className="shrink-0 bg-yellow-400 text-gray-900 text-sm font-bold px-2.5 py-1 rounded-full min-w-[28px] text-center">
+          <div className="shrink-0 bg-red-500 text-gray-900 text-sm font-bold px-2.5 py-1 rounded-full min-w-[28px] text-center">
             {courses.length}
           </div>
         </div>
@@ -430,13 +430,13 @@ export default function SchedulePage(props) {
           {/* ปุ่มเพิ่มวิชา */}
           <button
             onClick={() => navigate('/search')}
-            className="flex items-center gap-1.5 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm transition-colors shadow-sm"
+            className="flex items-center gap-1.5 bg-red-500 hover:bg-red-600 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm transition-colors shadow-sm"
           >
             <Search className="w-4 h-4" /> ค้นหาวิชา
           </button>
           <button
             onClick={() => navigate('/browse')}
-            className="flex items-center gap-1.5 bg-gray-800 hover:bg-gray-700 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors shadow-sm"
+            className="flex items-center gap-1.5 bg-gray-600 hover:bg-gray-600 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors shadow-sm"
           >
             <BookOpen className="w-4 h-4" /> ดูวิชาทั้งหมด
           </button>
@@ -465,7 +465,7 @@ export default function SchedulePage(props) {
         {/* ── รายการวิชา ── */}
         {courses.length > 0 && (
           <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-            <div className="bg-gray-800 text-white px-4 py-2.5 flex items-center justify-between">
+            <div className="bg-gray-600 text-white px-4 py-2.5 flex items-center justify-between">
               <span className="text-sm font-bold">รายวิชาที่เลือก</span>
               <button
                 onClick={clearCourses}
@@ -486,7 +486,7 @@ export default function SchedulePage(props) {
                         <span className="font-mono text-xs font-bold text-gray-700">{c.code}</span>
                         {c.sec && <span className="text-xs text-gray-400">Sec {c.sec}</span>}
                         {c.credits && (
-                          <span className="text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">
+                          <span className="text-[10px] bg-gray-200 text-gray-500 px-1.5 py-0.5 rounded">
                             {c.credits} หน่วยกิต
                           </span>
                         )}

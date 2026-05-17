@@ -148,7 +148,7 @@ export default function ScheduleTable({ courses, onRemoveCourse }) {
 
         {/* หัวตาราง: วัน */}
         <div
-          className="grid bg-gray-800 text-white"
+          className="grid bg-gray-600 text-white"
           style={{ gridTemplateColumns: `52px repeat(${colCount}, 1fr)` }}
         >
           <div className="py-2 text-center text-xs text-gray-500">เวลา</div>
@@ -171,7 +171,7 @@ export default function ScheduleTable({ courses, onRemoveCourse }) {
               }}
             >
               {/* เวลา */}
-              <div className="relative bg-gray-50 border-r border-gray-100">
+              <div className="relative bg-gray-100 border-r border-gray-100">
                 {HOURS.map((h) => (
                   <div
                     key={h}
@@ -253,7 +253,7 @@ export default function ScheduleTable({ courses, onRemoveCourse }) {
 
       {/* ===== รายการวิชา ===== */}
       <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-        <div className="bg-gray-800 text-white px-4 py-2.5 flex items-center justify-between">
+        <div className="bg-gray-600 text-white px-4 py-2.5 flex items-center justify-between">
           <span className="text-sm font-bold">รายวิชาที่เลือก</span>
           <span className="text-xs text-gray-400">{courses.length} วิชา</span>
         </div>
@@ -271,7 +271,7 @@ export default function ScheduleTable({ courses, onRemoveCourse }) {
                     <span className="font-mono text-xs font-bold text-gray-700">{c.code}</span>
                     {c.sec && <span className="text-xs text-gray-400">Sec {c.sec}</span>}
                     {c.credits && (
-                      <span className="text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">
+                      <span className="text-[10px] bg-gray-200 text-gray-500 px-1.5 py-0.5 rounded">
                         {c.credits} หน่วยกิต
                       </span>
                     )}

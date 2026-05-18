@@ -15,13 +15,13 @@ const DAYS = {
 };
 
 const DAY_COLORS = {
-  mon: 'bg-red-100 text-red-600 border-yellow-300',
+  mon: 'bg-yellow-100 text-yellow-800 border-yellow-300',
   tue: 'bg-pink-100 text-pink-800 border-pink-300',
   wed: 'bg-green-100 text-green-800 border-green-300',
   thu: 'bg-orange-100 text-orange-800 border-orange-300',
   fri: 'bg-blue-100 text-blue-800 border-blue-300',
   sat: 'bg-purple-100 text-purple-800 border-purple-300',
-  sun: 'bg-red-100 text-red-500 border-red-300',
+  sun: 'bg-red-100 text-red-800 border-red-300',
 };
 
 const STATUS_MAP = {
@@ -80,7 +80,7 @@ function CourseCard({ course, onAddCourse, addedSections }) {
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
-              <span className="font-mono text-red-500 font-bold text-sm tracking-wide">
+              <span className="font-mono text-yellow-400 font-bold text-sm tracking-wide">
                 {course.code}
               </span>
               {course.category && (
@@ -91,7 +91,7 @@ function CourseCard({ course, onAddCourse, addedSections }) {
             </div>
             <h3 className="font-bold text-sm leading-snug">{course.name}</h3>
           </div>
-          <span className="shrink-0 bg-red-500 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-full">
+          <span className="shrink-0 bg-yellow-400 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-full">
             {course.credits} หน่วยกิต
           </span>
         </div>
@@ -107,11 +107,11 @@ function CourseCard({ course, onAddCourse, addedSections }) {
         <div className="relative">
           <button
             onClick={() => setOpen((v) => !v)}
-            className="w-full flex items-center justify-between bg-gray-100 border border-gray-200 hover:border-red-500 rounded-xl px-4 py-3 text-sm transition-colors"
+            className="w-full flex items-center justify-between bg-gray-50 border border-gray-200 hover:border-yellow-400 rounded-xl px-4 py-3 text-sm transition-colors"
           >
             {selectedSec ? (
               <span className="flex items-center gap-2 text-gray-800">
-                <span className="font-bold text-red-500">Sec {selectedSec.sec}</span>
+                <span className="font-bold text-yellow-600">Sec {selectedSec.sec}</span>
                 {selectedSec.day && (
                   <span className={`text-xs px-2 py-0.5 rounded-full border ${DAY_COLORS[selectedSec.day] || ''}`}>
                     {DAYS[selectedSec.day]}
@@ -138,12 +138,12 @@ function CourseCard({ course, onAddCourse, addedSections }) {
                     onClick={() => !added && handleSelectSec(sec)}
                     disabled={added}
                     className={`w-full text-left px-4 py-3 border-b border-gray-50 last:border-0 transition-colors
-                      ${added ? 'opacity-50 cursor-not-allowed bg-gray-100' : 'hover:bg-red-50 cursor-pointer'}`}
+                      ${added ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'hover:bg-yellow-50 cursor-pointer'}`}
                   >
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-bold text-sm text-gray-800">Sec {sec.sec}</span>
                       {sec.day && (
-                        <span className={`text-xs px-2 py-0.5 rounded-full border ${DAY_COLORS[sec.day] || 'bg-gray-200 text-gray-600'}`}>
+                        <span className={`text-xs px-2 py-0.5 rounded-full border ${DAY_COLORS[sec.day] || 'bg-gray-100 text-gray-600'}`}>
                           {DAYS[sec.day] || sec.day}
                         </span>
                       )}
@@ -187,24 +187,24 @@ function CourseCard({ course, onAddCourse, addedSections }) {
 
         {/* แสดงข้อมูล section ที่เลือก */}
         {selectedSec && (
-          <div className="bg-red-50 border border-yellow-200 rounded-xl px-4 py-3 text-sm space-y-1.5">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-xl px-4 py-3 text-sm space-y-1.5">
             <div className="flex flex-wrap gap-3 text-gray-700">
               {selectedSec.startTime && (
                 <span className="flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-red-500" />
+                  <Clock className="w-3.5 h-3.5 text-yellow-600" />
                   {selectedSec.startTime}–{selectedSec.endTime}
                 </span>
               )}
               {selectedSec.room && (
                 <span className="flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-red-500" />
+                  <MapPin className="w-3.5 h-3.5 text-yellow-600" />
                   {selectedSec.room}
                 </span>
               )}
             </div>
             {selectedSec.instructor && selectedSec.instructor !== '-' && (
               <div className="flex items-start gap-1 text-xs text-gray-500">
-                <User className="w-3.5 h-3.5 mt-0.5 shrink-0 text-red-500" />
+                <User className="w-3.5 h-3.5 mt-0.5 shrink-0 text-yellow-600" />
                 <span>{selectedSec.instructor}</span>
               </div>
             )}
@@ -217,8 +217,8 @@ function CourseCard({ course, onAddCourse, addedSections }) {
           disabled={!selectedSec}
           className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-sm transition-all
             ${selectedSec
-              ? 'bg-red-500 hover:bg-red-600 text-gray-900 shadow-sm hover:shadow-md'
-              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              ? 'bg-yellow-400 hover:bg-yellow-500 text-gray-900 shadow-sm hover:shadow-md'
+              : 'bg-gray-100 text-gray-400 cursor-not-allowed'
             }`}
         >
           <Plus className="w-4 h-4" />
@@ -283,14 +283,14 @@ export default function SearchPage({
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 font-sans">
+    <div className="min-h-screen bg-gray-50 font-sans">
 
       {/* ===== Header ===== */}
-      <header className="bg-gray-600 text-white px-4 py-3 shadow-lg sticky top-0 z-40">
+      <header className="bg-gray-800 text-white px-4 py-3 shadow-lg sticky top-0 z-40">
         <div className="max-w-4xl mx-auto flex items-center gap-3">
           <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-1.5 bg-gray-600 hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors shrink-0"
+            onClick={() => navigate('/schedule')}
+            className="flex items-center gap-1.5 bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors shrink-0"
           >
             <ArrowLeft className="w-4 h-4" />
             กลับ
@@ -307,7 +307,7 @@ export default function SearchPage({
                   onChange={(e) => { setSearchTerm(e.target.value); setShowHistory(true); }}
                   onFocus={() => setShowHistory(true)}
                   onKeyDown={handleKeyDown}
-                  className="w-full bg-gray-600 border border-gray-600 text-white placeholder-gray-400 px-4 py-2.5 pl-10 rounded-xl focus:outline-none focus:border-red-500 text-sm"
+                  className="w-full bg-gray-700 border border-gray-600 text-white placeholder-gray-400 px-4 py-2.5 pl-10 rounded-xl focus:outline-none focus:border-yellow-400 text-sm"
                   placeholder="ค้นหารหัสวิชา, ชื่อวิชา, อาจารย์..."
                   autoFocus
                 />
@@ -323,7 +323,7 @@ export default function SearchPage({
               </div>
               <button
                 onClick={() => handleSearch()}
-                className="bg-red-500 hover:bg-red-600 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm shrink-0 transition-colors"
+                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-4 py-2 rounded-xl text-sm shrink-0 transition-colors"
               >
                 ค้นหา
               </button>
@@ -346,7 +346,7 @@ export default function SearchPage({
                 {searchHistory.map((h) => (
                   <div
                     key={h}
-                    className="flex items-center justify-between px-4 py-2.5 hover:bg-gray-100 cursor-pointer border-b border-gray-50 last:border-0"
+                    className="flex items-center justify-between px-4 py-2.5 hover:bg-gray-50 cursor-pointer border-b border-gray-50 last:border-0"
                   >
                     <button
                       className="flex items-center gap-2 text-sm text-gray-700 flex-1 text-left"
@@ -369,8 +369,8 @@ export default function SearchPage({
 
           {/* วิชาที่เลือกแล้ว */}
           <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-1.5 bg-red-500 text-gray-900 px-3 py-2 rounded-lg text-sm font-bold shrink-0 hover:bg-red-600 transition-colors"
+            onClick={() => navigate('/schedule')}
+            className="flex items-center gap-1.5 bg-yellow-400 text-gray-900 px-3 py-2 rounded-lg text-sm font-bold shrink-0 hover:bg-yellow-500 transition-colors"
           >
             <BookOpen className="w-4 h-4" />
             {courses.length}
@@ -401,7 +401,7 @@ export default function SearchPage({
                     <button
                       key={h}
                       onClick={() => handleHistoryClick(h)}
-                      className="flex items-center gap-1.5 text-sm bg-white border border-gray-200 hover:border-red-500 hover:bg-red-50 px-3 py-1.5 rounded-full transition-colors text-gray-700"
+                      className="flex items-center gap-1.5 text-sm bg-white border border-gray-200 hover:border-yellow-400 hover:bg-yellow-50 px-3 py-1.5 rounded-full transition-colors text-gray-700"
                     >
                       <History className="w-3 h-3 text-gray-300" />
                       {h}
@@ -435,7 +435,7 @@ export default function SearchPage({
           <>
             <p className="text-sm text-gray-500 mb-4">
               พบ <span className="font-bold text-gray-700">{results.length}</span> วิชา
-              จากคำค้นหา "<span className="font-bold text-red-500">{submitted}</span>"
+              จากคำค้นหา "<span className="font-bold text-yellow-600">{submitted}</span>"
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {results.map((course) => (

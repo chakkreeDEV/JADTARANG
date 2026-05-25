@@ -732,6 +732,11 @@ export default function SchedulePage(props) {
               ${dark ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-gray-800 hover:bg-gray-700 text-white'}`}>
             <BookOpen className="w-4 h-4"/> ดูวิชาทั้งหมด
           </button>
+          <button onClick={()=>navigate('/curriculum')}
+            className={`flex items-center gap-1.5 font-bold px-4 py-2 rounded-xl text-sm shadow-sm transition-colors
+              ${dark ? 'bg-yellow-500 hover:bg-yellow-400 text-gray-900' : 'bg-yellow-400 hover:bg-yellow-300 text-gray-900'}`}>
+            <GraduationCap className="w-4 h-4"/> วิชาแนะนำ
+          </button>
           <button onClick={()=>setShowSizer((v)=>!v)}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-bold shadow-sm transition-colors border
               ${dark ? 'bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700' : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'}`}>
